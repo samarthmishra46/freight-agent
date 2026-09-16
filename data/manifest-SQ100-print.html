@@ -1,0 +1,127 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sample Manifest — SQ100</title>
+<style>
+:root{--p:#5457ED;--gold:#DFA341;--g900:#111827;--g700:#374151;--g600:#4B5563;
+ --g500:#6B7280;--g300:#D1D5DB;--g200:#E5E7EB;--g100:#F3F4F6;--g50:#F9FAFB;
+ --ok:#166534;--okbg:#B8EFCB;--err:#C54F48;--errbg:#FECACA}
+body{margin:0;background:var(--g100);color:var(--g900);
+ font-family:"Inter",-apple-system,BlinkMacSystemFont,Arial,sans-serif;font-size:13px;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:22px}
+.conf{background:var(--g900);color:var(--g300);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:12px}
+.conf b{color:var(--gold);display:block;font-size:11px;letter-spacing:.09em;margin-bottom:5px}
+.conf span{color:#fff;font-weight:600}
+.doc{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:26px 28px}
+.dochead{border-bottom:2px solid var(--g900);padding-bottom:14px;margin-bottom:18px}
+.dochead h1{font-size:19px;margin:0 0 3px;letter-spacing:.02em;text-transform:uppercase}
+.dochead .who{font-size:12px;color:var(--g600)}
+h2{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g500);
+ margin:22px 0 9px;font-weight:600}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:0;
+ border:1px solid var(--g200);border-radius:8px;overflow:hidden}
+.kv div{padding:8px 11px;border-right:1px solid var(--g200);border-bottom:1px solid var(--g200)}
+.kv b{display:block;font-size:9.5px;color:var(--g500);text-transform:uppercase;letter-spacing:.05em;
+ font-weight:600;margin-bottom:2px}
+.kv span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:11.5px}
+th{text-align:left;background:var(--g50);font-size:9.5px;color:var(--g500);font-weight:600;
+ text-transform:uppercase;letter-spacing:.04em;padding:8px 9px;border:1px solid var(--g200)}
+td{padding:8px 9px;border:1px solid var(--g200);vertical-align:top}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.num{text-align:right;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.scroll{overflow-x:auto}
+tfoot td{background:var(--g50);font-weight:600}
+.pill{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.sac{background:var(--okbg);color:var(--ok)}
+.ov{background:var(--errbg);color:var(--err)}
+.note{background:var(--g50);border-left:3px solid var(--p);border-radius:0 8px 8px 0;
+ padding:13px 15px;margin:20px 0;font-size:12.5px;color:var(--g700)}
+.note b{color:var(--g900)}
+.foot{margin-top:16px;color:var(--g600);font-size:12px;line-height:1.6}
+code{background:var(--g100);padding:1px 5px;border-radius:4px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px}
+@page{size:A4 landscape;margin:10mm}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.conf{border:1px solid #000}.doc{border:0;padding:0}table{font-size:10px}th,td{padding:5px 6px}}
+</style>
+
+<div class="wrap">
+
+<div class="conf">
+  <b>CONFIDENTIAL — NOT FOR DISTRIBUTION</b>
+  Issued to <span>Samarth Mishra &lt;samarthmishra46@gmail.com&gt;</span> for the purpose of a technical
+  assessment task only. Any other recipient, use, copy, forwarding or disclosure is unauthorised.
+  Invented sample data — these companies, addresses and shipments do not exist.
+</div>
+
+<div class="doc">
+
+<div class="dochead">
+  <h1>Air Cargo Manifest — Consolidation</h1>
+  <div class="who">Yarra Trade Operations Pty Ltd · Freight Forwarder · Sydney NSW</div>
+</div>
+
+<h2>Master air waybill</h2>
+<div class="kv">
+  <div><b>MAWB number</b><span>13174990090</span></div>
+  <div><b>Carrier</b><span>China Airlines</span></div>
+  <div><b>Flight</b><span>SQ100</span></div>
+  <div><b>Origin</b><span>SGSIN — Singapore</span></div>
+  <div><b>Destination</b><span>AUSYD — Sydney</span></div>
+  <div><b>ETA</b><span>10 Dec 2025 14:30</span></div>
+  <div><b>Freight forwarder indicator</b><span>YES — Yarra Trade</span></div>
+  <div><b>Terminal (CTO)</b><span>FW53H</span></div>
+  <div><b>Destination depot</b><span>I028N — Jupiter Air Oceania</span></div>
+  <div><b>Total house bills</b><span>10</span></div>
+  <div><b>Total pieces</b><span>11</span></div>
+  <div><b>Total gross weight</b><span>247.6 kg</span></div>
+</div>
+
+<h2>House bills</h2>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>HAWB</th><th>Consignor</th><th>Consignee</th><th>Delivery address</th>
+  <th>Pcs</th><th>Weight kg</th><th>Goods description</th><th>Invoice value</th>
+  <th>Ccy</th><th>Origin</th>
+</tr></thead>
+<tbody>
+<tr><td class="mono">131749900901001</td><td>Shenzhen Kaiyu Electronics</td><td>Coastline Imports Pty Ltd</td>
+    <td>14 Argyle St, Brisbane QLD 4000</td><td class="num">1</td><td class="num">12.4</td>
+    <td>USB charging hubs</td><td class="num">420.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901002</td><td>Guangzhou Meili Homeware</td><td>Marla Home Goods</td>
+    <td>88 Sydney Rd, Brunswick VIC 3056</td><td class="num">1</td><td class="num">6.8</td>
+    <td>Ceramic tableware</td><td class="num">185.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901003</td><td>Ningbo Hantek Tools Co</td><td>Nordway Supplies Pty Ltd</td>
+    <td>3/22 Chalmers St, Sydney NSW 2010</td><td class="num">2</td><td class="num">41.2</td>
+    <td>Hand tools, non-powered</td><td class="num">740.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901004</td><td>Dongguan Rui Fashion Ltd</td><td>Bexley Retail Group</td>
+    <td>210 Forest Rd, Bexley NSW 2207</td><td class="num">1</td><td class="num">9.1</td>
+    <td>Cotton apparel</td><td class="num">310.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901005</td><td>Kuala Lumpur Trade Partners</td><td>Tanner &amp; Cole Trading</td>
+    <td>17 Hay St, Perth WA 6000</td><td class="num">1</td><td class="num">28.7</td>
+    <td>Leather goods</td><td class="num">965.00</td><td>AUD</td><td>MY</td></tr>
+<tr><td class="mono">131749900901006</td><td>Bangkok Artline Supply</td><td>Harrow Street Studio</td>
+    <td>9 Harrow St, Adelaide SA 5000</td><td class="num">1</td><td class="num">4.3</td>
+    <td>Artists' brushes and canvas</td><td class="num">128.00</td><td>AUD</td><td>TH</td></tr>
+<tr><td class="mono">131749900901007</td><td>Hangzhou Paper Mills</td><td>Vellum Paper Co</td>
+    <td>404 Smith St, Collingwood VIC 3066</td><td class="num">1</td><td class="num">33.5</td>
+    <td>Coated printing paper</td><td class="num">605.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901008</td><td>Foshan Anlong Electric</td><td>Quayside Electrical</td>
+    <td>61 Hunter St, Newcastle NSW 2300</td><td class="num">1</td><td class="num">22.9</td>
+    <td>Electrical fittings</td><td class="num">880.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901009</td><td>Qingdao Ridgeline Machinery</td><td>Ridgeline Equipment Pty Ltd</td>
+    <td>7 Kremzow Rd, Brendale QLD 4500</td><td class="num">1</td><td class="num">54.0</td>
+    <td>Pump assemblies and spares</td><td class="num">1,450.00</td><td>AUD</td><td>CN</td></tr>
+<tr><td class="mono">131749900901010</td><td>Tiruppur Sona Mills Pvt Ltd</td><td>Sona Textiles Australia</td>
+    <td>44 Parramatta Rd, Homebush NSW 2140</td><td class="num">1</td><td class="num">34.7</td>
+    <td>Knitted cotton fabric rolls</td><td class="num">2,100.00</td><td>AUD</td><td>IN</td></tr>
+</tbody>
+<tfoot><tr><td colspan="4">Totals</td><td class="num">11</td><td class="num">247.6</td>
+  <td></td><td class="num">7,783.00</td><td>AUD</td><td></td></tr></tfoot>
+</table>
+</div>
+
+</div>
+
+
+
+</div>

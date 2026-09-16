@@ -1,0 +1,74 @@
+{
+  "_comment": [
+    "Ground truth for data/manifest-SQ100.pdf. This is a TEST ORACLE and must",
+    "never be read by the parser, the MCP server, the agent loop or any",
+    "application code — only by tests, which assert parser output against it.",
+    "The derived_clearance section is the contents of the 'Clearance treatment",
+    "— derived, not stated on the manifest' table, which was removed from the",
+    "HTML before printing to PDF because a real manifest does not carry a",
+    "clearance classification of itself. Our code has to compute that split",
+    "from value_aud; if it ever appears in parser output, something is reading",
+    "a classification out of an untrusted document."
+  ],
+  "source_html": "data/4-FreightAgent-Sample-Manifest.html",
+  "source_pdf": "data/manifest-SQ100.pdf",
+
+  "master": {
+    "mawb": "13174990090",
+    "carrier": "China Airlines",
+    "flight": "SQ100",
+    "origin": "SGSIN",
+    "destination": "AUSYD",
+    "eta": "2025-12-10T14:30",
+    "forwarder_indicator": true,
+    "terminal": "FW53H",
+    "depot": "I028N",
+    "total_house_bills": 10,
+    "total_pieces": 11,
+    "total_weight_kg": 247.6
+  },
+
+  "house_bills": [
+    {"hawb": "131749900901001", "consignor": "Shenzhen Kaiyu Electronics", "consignee": "Coastline Imports Pty Ltd", "delivery_address": "14 Argyle St, Brisbane QLD 4000", "pieces": 1, "weight_kg": 12.4, "goods_description": "USB charging hubs", "value_aud": 420.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901002", "consignor": "Guangzhou Meili Homeware", "consignee": "Marla Home Goods", "delivery_address": "88 Sydney Rd, Brunswick VIC 3056", "pieces": 1, "weight_kg": 6.8, "goods_description": "Ceramic tableware", "value_aud": 185.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901003", "consignor": "Ningbo Hantek Tools Co", "consignee": "Nordway Supplies Pty Ltd", "delivery_address": "3/22 Chalmers St, Sydney NSW 2010", "pieces": 2, "weight_kg": 41.2, "goods_description": "Hand tools, non-powered", "value_aud": 740.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901004", "consignor": "Dongguan Rui Fashion Ltd", "consignee": "Bexley Retail Group", "delivery_address": "210 Forest Rd, Bexley NSW 2207", "pieces": 1, "weight_kg": 9.1, "goods_description": "Cotton apparel", "value_aud": 310.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901005", "consignor": "Kuala Lumpur Trade Partners", "consignee": "Tanner & Cole Trading", "delivery_address": "17 Hay St, Perth WA 6000", "pieces": 1, "weight_kg": 28.7, "goods_description": "Leather goods", "value_aud": 965.00, "currency": "AUD", "origin_country": "MY"},
+    {"hawb": "131749900901006", "consignor": "Bangkok Artline Supply", "consignee": "Harrow Street Studio", "delivery_address": "9 Harrow St, Adelaide SA 5000", "pieces": 1, "weight_kg": 4.3, "goods_description": "Artists' brushes and canvas", "value_aud": 128.00, "currency": "AUD", "origin_country": "TH"},
+    {"hawb": "131749900901007", "consignor": "Hangzhou Paper Mills", "consignee": "Vellum Paper Co", "delivery_address": "404 Smith St, Collingwood VIC 3066", "pieces": 1, "weight_kg": 33.5, "goods_description": "Coated printing paper", "value_aud": 605.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901008", "consignor": "Foshan Anlong Electric", "consignee": "Quayside Electrical", "delivery_address": "61 Hunter St, Newcastle NSW 2300", "pieces": 1, "weight_kg": 22.9, "goods_description": "Electrical fittings", "value_aud": 880.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901009", "consignor": "Qingdao Ridgeline Machinery", "consignee": "Ridgeline Equipment Pty Ltd", "delivery_address": "7 Kremzow Rd, Brendale QLD 4500", "pieces": 1, "weight_kg": 54.0, "goods_description": "Pump assemblies and spares", "value_aud": 1450.00, "currency": "AUD", "origin_country": "CN"},
+    {"hawb": "131749900901010", "consignor": "Tiruppur Sona Mills Pvt Ltd", "consignee": "Sona Textiles Australia", "delivery_address": "44 Parramatta Rd, Homebush NSW 2140", "pieces": 1, "weight_kg": 34.7, "goods_description": "Knitted cotton fabric rolls", "value_aud": 2100.00, "currency": "AUD", "origin_country": "IN"}
+  ],
+
+  "totals": {
+    "pieces": 11,
+    "weight_kg": 247.6,
+    "value_aud": 7783.00,
+    "currency": "AUD"
+  },
+
+  "derived_clearance": {
+    "threshold_aud": 1000,
+    "rule": "value_aud <= 1000 -> SAC, goes on the cargo report; value_aud > 1000 -> import declaration by a licensed broker, excluded from the cargo report",
+    "expected_sac_count": 8,
+    "expected_over_count": 2,
+    "expected_sac_hawbs": [
+      "131749900901001", "131749900901002", "131749900901003", "131749900901004",
+      "131749900901005", "131749900901006", "131749900901007", "131749900901008"
+    ],
+    "expected_over_hawbs": ["131749900901009", "131749900901010"],
+    "by_hawb": [
+      {"hawb": "131749900901001", "value_aud": 420.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901002", "value_aud": 185.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901003", "value_aud": 740.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901004", "value_aud": 310.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901005", "value_aud": 965.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901006", "value_aud": 128.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901007", "value_aud": 605.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901008", "value_aud": 880.00, "threshold_test": "<= 1,000", "treatment": "SAC — on the cargo report"},
+      {"hawb": "131749900901009", "value_aud": 1450.00, "threshold_test": "> 1,000", "treatment": "Import declaration — broker"},
+      {"hawb": "131749900901010", "value_aud": 2100.00, "threshold_test": "> 1,000", "treatment": "Import declaration — broker"}
+    ]
+  }
+}

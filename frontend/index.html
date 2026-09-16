@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FreightAgent — Lodgement Terminal</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="strip">
+    <span class="mark">FreightAgent</span>
+    <div class="facts">
+      <span>Flight <span class="v" id="f-flight">—</span></span>
+      <span><span class="v" id="f-route">—</span></span>
+      <span>MAWB <span class="v" id="f-mawb">—</span></span>
+    </div>
+    <span class="spacer"></span>
+    <span class="pill" id="status-pill">NO STATUS</span>
+    <label class="plumbing-toggle">
+      <input type="checkbox" id="plumbing">
+      Show plumbing
+    </label>
+  </header>
+
+  <div class="body">
+
+    <main class="conversation">
+      <div class="stream" id="stream" aria-live="polite">
+        <div class="empty" id="empty">
+          <strong>Upload the manifest to begin.</strong>
+          Drag the consolidation manifest PDF onto this panel, or ask for it by name.
+        </div>
+      </div>
+
+      <form class="composer" id="composer">
+        <textarea id="input" rows="1" placeholder="Type a message"
+                  aria-label="Message to the lodgement assistant"></textarea>
+        <button class="send" id="send" type="submit">Send</button>
+      </form>
+    </main>
+
+    <aside class="rail">
+      <h2>Lodgements</h2>
+
+      <div class="lodge awaiting" id="l-cargo_report">
+        <div class="top">
+          <span class="name">Cargo report</span>
+          <span class="state">awaiting</span>
+        </div>
+        <div class="ref"></div>
+        <div class="errs"></div>
+      </div>
+
+      <div class="lodge awaiting" id="l-underbond">
+        <div class="top">
+          <span class="name">Underbond movement</span>
+          <span class="state">awaiting</span>
+        </div>
+        <div class="ref"></div>
+        <div class="errs"></div>
+      </div>
+
+      <div class="lodge awaiting" id="l-outturn">
+        <div class="top">
+          <span class="name">Outturn</span>
+          <span class="state">awaiting</span>
+        </div>
+        <div class="ref"></div>
+        <div class="errs"></div>
+      </div>
+
+      <div class="who">
+        <div class="name" id="op-name">Priya Sharma</div>
+        <div id="op-forwarder">Yarra Trade Operations Pty Ltd</div>
+        <div class="cert" id="op-cert">T3-YARRA-0041</div>
+        <div class="warn" id="op-warn" hidden>Identity asserted by this client. Not verified.</div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden>Lodged</div>
+
+<input type="file" id="file" accept="application/pdf" hidden>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

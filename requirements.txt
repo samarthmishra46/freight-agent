@@ -1,0 +1,26 @@
+# FreightAgent — v1 dependencies
+#
+# Pinned exactly. Added in response to the phase 10 coverage check: OWASP 2026
+# LLM04 Supply Chain was exposed partly because nothing here was pinned, so a
+# fresh install resolved whatever was current that day and nothing recorded
+# what the tests had actually run against. These are the versions the v1 and v2
+# test runs in docs/test-output-*.txt were produced with.
+#
+# The other two halves of that LLM04 row are still open and still reported: the
+# MCP subprocess inherits the loop's whole environment, and the model's tool
+# description is whatever the MCP server's docstring says.
+
+fastapi==0.141.1
+uvicorn==0.52.4
+httpx==0.28.1
+openai==3.13.0
+pdfplumber==0.11.10
+reportlab==5.0.1
+mcp==2.2.0                 # 2.x renamed FastMCP to MCPServer; server.py targets 2.x
+pytest==9.1.1
+pytest-asyncio==1.4.0
+python-dotenv==1.2.3
+
+# Phase 9 (hardening) only — not installed for the v1 baseline:
+#   transformers
+#   torch

@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+data/sessions.json
+tests/.server-logs/
+CLAUDE.md
+docs/
