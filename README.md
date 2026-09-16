@@ -11,6 +11,7 @@ never the LLM — talks to the customs server.
 > See `NOTES-controls-i-noticed.md` for the running list, and
 > `docs/FreightAgent-Execution-Plan.md` for the assessment plan.
 
+## Source Code -> https://github.com/samarthmishra46/freight-agent
 ## Architecture
 
 ```
