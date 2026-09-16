@@ -107,8 +107,9 @@ phase 3.5 section of `docs/FreightAgent-Build-Plan.md` and
 
 ### 5. Chat UI
 
-Open <http://localhost:8000/> — the backend serves it. Drag the manifest PDF
-onto the conversation to begin.
+Open <http://localhost:8000/> — the backend serves it. To load the manifest,
+either drag the PDF onto the conversation, press **Choose PDF…** on the empty
+panel, or use the **+ PDF** button beside the message box at any time.
 
 Three regions: a status strip carrying the flight, MAWB and cargo status
 (`NO STATUS → HELD → CLEAR → SUBUBMOV → RELEASED`), the conversation with

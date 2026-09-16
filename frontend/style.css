@@ -548,3 +548,38 @@ table.fields .excluded td.val { color: var(--red); }
   border: 1px solid var(--line, #4a5348);
   font-weight: 500;
 }
+
+/* ------------------------------------------------- choose a manifest file */
+
+/* The manifest could only be drag-and-dropped, which is undiscoverable and
+   impossible on a touch device. Both of these open the same hidden input. */
+
+.empty .pick {
+  display: block;
+  margin: 14px auto 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  padding: 8px 16px;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.empty .pick:hover { background: var(--ground); color: var(--ink-2); }
+
+.composer .attach {
+  flex: 0 0 auto;
+  align-self: stretch;
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r);
+  padding: 9px 12px;
+  color: var(--ink-3);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.composer .attach:hover { color: var(--ink); border-style: solid; background: var(--surface-2); }
+.composer .attach[disabled] { opacity: .5; cursor: default; }

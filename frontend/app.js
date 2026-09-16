@@ -399,6 +399,7 @@ function setBusy(value) {
   busy = value;
   el("send").disabled = value;
   el("input").disabled = value;
+  el("attach").disabled = value;
   document.querySelectorAll(".confirm").forEach((b) => { b.disabled = value; });
 }
 
@@ -619,7 +620,27 @@ stream.addEventListener("drop", (event) => {
   upload(file);
 });
 
-el("file").addEventListener("change", (event) => upload(event.target.files[0]));
+/* The hidden file input is the only thing that can open the OS file picker, so
+ * every visible "choose a file" control routes through it. Resetting value
+ * afterwards means picking the same file twice still fires a change event. */
+const fileInput = el("file");
+
+function openFilePicker() {
+  fileInput.value = "";
+  fileInput.click();
+}
+
+fileInput.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) upload(file);
+});
+
+el("attach").addEventListener("click", openFilePicker);
+stream.addEventListener("click", (event) => {
+  // The empty-state button is removed once the conversation starts, so it is
+  // bound by delegation rather than directly.
+  if (event.target.id === "pick-empty") openFilePicker();
+});
 
 el("plumbing").addEventListener("change", (event) => {
   localStorage.setItem("freightagent.plumbing", event.target.checked ? "1" : "0");

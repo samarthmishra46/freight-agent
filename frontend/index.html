@@ -31,11 +31,15 @@
       <div class="stream" id="stream" aria-live="polite">
         <div class="empty" id="empty">
           <strong>Upload the manifest to begin.</strong>
-          Drag the consolidation manifest PDF onto this panel, or ask for it by name.
+          Drag the consolidation manifest PDF onto this panel, or choose it from
+          your computer.
+          <button class="pick" id="pick-empty" type="button">Choose PDF…</button>
         </div>
       </div>
 
       <form class="composer" id="composer">
+        <button class="attach" id="attach" type="button"
+                title="Attach a manifest PDF" aria-label="Attach a manifest PDF">+ PDF</button>
         <textarea id="input" rows="1" placeholder="Type a message"
                   aria-label="Message to the lodgement assistant"></textarea>
         <button class="send" id="send" type="submit">Send</button>
